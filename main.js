@@ -99,5 +99,14 @@ function randint(min, max) { // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+window.addEventListener('touchstart', e => {
+    if (video.readyState < 1) return;
+
+    const touch = e.touches[0];
+    if (!touch) return;
+
+    updatePlayback(touch.clientX);
+});
+
 direction = 'center';
 playTo(video.duration / 2);
